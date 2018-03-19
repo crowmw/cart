@@ -3,4 +3,6 @@ sudo: true
 node_js:
     - 6
 script:
+    - npm run singletest
     - npm run build
+    
