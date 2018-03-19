@@ -1,0 +1,30 @@
+{
+  "name": "cart",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "json-server": "^0.12.1",
+    "react-scripts": "1.1.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "axios-mock-adapter": "^1.14.1",
+    "dotenv": "^5.0.1",
+    "normalizr": "^3.2.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-mock-store": "^1.5.1",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "api": "./node_modules/.bin/json-server db.json --port 3001 --watch"
+  }
+}

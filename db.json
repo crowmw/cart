@@ -1,0 +1,101 @@
+{
+  "pizza": [
+    {
+      "id": "margherita",
+      "index": 0,
+      "name": "Margherita",
+      "description": "Pizza sos ser",
+      "topping": ["sos-pomidorowy", "ser"],
+      "price": [16, 22, 29, 32]
+    },
+    {
+      "id": "capriciosa",
+      "index": 1,
+      "name": "Capriciosa",
+      "description": "Pizza sos ser szynka pieczarki",
+      "topping": ["sos-pomidorowy", "ser", "szynka", "pieczarki"],
+      "price": [16, 22, 29, 32]
+    },
+    {
+      "id": "farmerska",
+      "index": 2,
+      "name": "Farmerska",
+      "description": "Pizza sos ser szynka ogonówka kabanos",
+      "topping": ["sos-pomidorowy", "ser", "szynka", "ogonowka", "kabanos"],
+      "price": [16, 22, 29, 32]
+    }
+  ],
+  "sizes": [
+    { "id": 30, "name": "mała", "size": 30 },
+    { "id": 40, "name": "średnia", "size": 40 },
+    { "id": 50, "name": "duża", "size": 50 },
+    { "id": 50, "name": "mega", "size": 50 },
+    { "id": 60, "name": "giga", "size": 60 }
+  ],
+  "topping-types": ["sauce", "fruit-vegetable", "meat", "cheese", "spice"],
+  "topping": [
+    {
+      "id": "sos-pomidorowy",
+      "index": 0,
+      "name": "sos pomidorowy",
+      "type": "sauce",
+      "description": "Sos wykonany z pomidorów"
+    },
+    {
+      "id": "pieczarki",
+      "index": 1,
+      "name": "pieczarki",
+      "type": "fruit-vegetable",
+      "description": "Pieczarki chodowane na końskich kupach"
+    },
+    {
+      "id": "ser",
+      "index": 2,
+      "name": "ser mozzarella",
+      "type": "cheese",
+      "description": "Ser mozzarella ciągnący"
+    },
+    {
+      "id": "szynka",
+      "index": 3,
+      "name": "szynka",
+      "type": "meat",
+      "description": "Długo dojżewająca szynka konserwowa"
+    },
+    {
+      "id": "salami",
+      "index": 4,
+      "name": "salami",
+      "type": "meat",
+      "description": "Salami prosto od osła"
+    },
+    {
+      "id": "ananas",
+      "index": 5,
+      "name": "ananas",
+      "type": "fruit-vegetable",
+      "description": "Ananasa do pizzy nie polecamy nikomu"
+    },
+    {
+      "id": "ogonowka",
+      "index": 6,
+      "name": "ogonówka",
+      "type": "meat",
+      "description": "Prosto od świeżego świniaczka"
+    },
+    {
+      "id": "kabanos",
+      "index": 7,
+      "name": "kabanos",
+      "type": "meat",
+      "description": "Cienka kiełbasa w całości"
+    }
+  ],
+  "sauce": [
+    {
+      "id": "sos-pomidorowy",
+      "name": "sos pomidorowy"
+    }
+  ],
+  "bottom": ["normal", "thick"]
+}
