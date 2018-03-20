@@ -23,12 +23,11 @@ mock.onGet("/pizza").reply(200, [
 ]);
 
 describe("pizzaActions", () => {
+  // afterEach(() => {
+  //   mock.reset();
+  //   mock.restore();
+  // });
   describe("fetchPizza", () => {
-    afterEach(() => {
-      mock.reset();
-      mock.restore();
-    });
-
     it("creates FETCH_PIZZA_SUCCESS when fetching pizza has been done", () => {
       const expectedActions = [
         { type: types.FETCH_PIZZA },
