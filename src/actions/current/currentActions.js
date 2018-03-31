@@ -6,3 +6,17 @@ export const currentPizzaChange = id => {
     id
   };
 };
+
+export const currentSizeChange = size => {
+  return {
+    type: types.CURRENT_SIZE_CHANGE,
+    size
+  }
+}
+
+export const currentToppingsChange = (id, quantity = 1) => {
+  return {
+    type: types.CURRENT_TOPPINGS_CHANGE,
+    id, quantity
+  }
+}
