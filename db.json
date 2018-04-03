@@ -39,56 +39,64 @@
       "index": 0,
       "name": "sos pomidorowy",
       "type": "sauce",
-      "description": "Sos wykonany z pomidorów"
+      "description": "Sos wykonany z pomidorów",
+      "price": "2"
     },
     {
       "id": "pieczarki",
       "index": 1,
       "name": "pieczarki",
       "type": "fruit-vegetable",
-      "description": "Pieczarki chodowane na końskich kupach"
+      "description": "Pieczarki chodowane na końskich kupach",
+      "price": "2"
     },
     {
       "id": "ser",
       "index": 2,
       "name": "ser mozzarella",
       "type": "cheese",
-      "description": "Ser mozzarella ciągnący"
+      "description": "Ser mozzarella ciągnący",
+      "price": "2"
     },
     {
       "id": "szynka",
       "index": 3,
       "name": "szynka",
       "type": "meat",
-      "description": "Długo dojżewająca szynka konserwowa"
+      "description": "Długo dojżewająca szynka konserwowa",
+      "price": "2"
     },
     {
       "id": "salami",
       "index": 4,
       "name": "salami",
       "type": "meat",
-      "description": "Salami prosto od osła"
+      "description": "Salami prosto od osła",
+      "price": "2"
     },
     {
       "id": "ananas",
       "index": 5,
       "name": "ananas",
       "type": "fruit-vegetable",
-      "description": "Ananasa do pizzy nie polecamy nikomu"
+      "description": "Ananasa do pizzy nie polecamy nikomu",
+      "price": "2"
     },
     {
       "id": "ogonowka",
       "index": 6,
       "name": "ogonówka",
       "type": "meat",
-      "description": "Prosto od świeżego świniaczka"
+      "description": "Prosto od świeżego świniaczka",
+      "price": "2"
     },
     {
       "id": "kabanos",
       "index": 7,
       "name": "kabanos",
       "type": "meat",
-      "description": "Cienka kiełbasa w całości"
+      "description": "Cienka kiełbasa w całości",
+      "price": "2"
     }
   ],
   "sauce": [

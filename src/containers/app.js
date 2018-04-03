@@ -1,29 +1,34 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import SizeChange from './sizeChange'
-import ToppingSelect from "./toppingSelect";
+import ToppingSelect from './toppingSelect'
 
-import { fetchPizzas } from "../actions/pizza/pizzaActions";
-import { fetchTopping } from "../actions/topping/toppingActions";
-import { currentPizzaChange } from "../actions/current/currentActions";
+import { fetchPizzas } from '../actions/pizza/pizzaActions'
+import { fetchTopping } from '../actions/topping/toppingActions'
+import { currentPizzaChange } from '../actions/current/currentActions'
+import { addCurrentToCart } from '../actions/cart/cartActions'
 
-import { getPizzaEntitiesArray } from "../selectors/pizzaSelector";
-import { getCurrentPizza } from "../selectors/currentSelector";
+import { getPizzaEntitiesArray } from '../selectors/pizzaSelector'
+import { getCurrentPizza } from '../selectors/currentSelector'
 
 class App extends Component {
   componentWillMount() {
-    this.props.fetchPizzas();
-    this.props.fetchTopping();
+    this.props.fetchPizzas()
+    this.props.fetchTopping()
   }
 
   handlePizzaClick = pizza => {
-    this.props.currentPizzaChange(pizza.id);
-  };
+    this.props.currentPizzaChange(pizza.id)
+  }
+
+  handleAddToCartClick = () => {
+    this.props.addCurrentToCart()
+  }
 
   render() {
-    const { pizzas, currentPizza } = this.props;
+    const { pizzas, currentPizza } = this.props
 
     if (pizzas.length > 0) {
       return (
@@ -33,7 +38,11 @@ class App extends Component {
               return (
                 <li
                   key={index}
-                  style={{ marginBottom: "1em", cursor: "pointer", background: currentPizza === pizza.id ? '#cccccc' : '' }}
+                  style={{
+                    marginBottom: '1em',
+                    cursor: 'pointer',
+                    background: currentPizza === pizza.id ? '#cccccc' : ''
+                  }}
                   onClick={() => this.handlePizzaClick(pizza)}
                 >
                   <div>
@@ -43,35 +52,41 @@ class App extends Component {
                   </div>
                   <div>{pizza.topping.map(topping => `${topping.name}, `)}</div>
                 </li>
-              );
+              )
             })}
           </ul>
           {currentPizza && <SizeChange />}
           {currentPizza && <ToppingSelect />}
+          {currentPizza && (
+            <button onClick={this.handleAddToCartClick}>
+              Dodaj do koszyka
+            </button>
+          )}
         </div>
-      );
+      )
     } else {
-      return null;
+      return null
     }
   }
 }
 
 const mapState = state => {
-  return { 
+  return {
     pizzas: getPizzaEntitiesArray(state),
     currentPizza: getCurrentPizza(state)
-  };
-};
+  }
+}
 
 const mapDispatch = dispatch => {
   return bindActionCreators(
     {
       fetchPizzas,
       fetchTopping,
-      currentPizzaChange
+      currentPizzaChange,
+      addCurrentToCart
     },
     dispatch
-  );
-};
+  )
+}
 
-export default connect(mapState, mapDispatch)(App);
+export default connect(mapState, mapDispatch)(App)

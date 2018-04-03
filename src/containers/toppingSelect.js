@@ -14,7 +14,10 @@ class ToppingSelect extends Component {
   render() {
     const { toppings } = this.props
     return (
-      <div className="ToppingSelect" style={{ display: 'flex' }}>
+      <div
+        className="ToppingSelect"
+        style={{ display: 'flex', flexWrap: 'wrap' }}
+      >
         {toppings.map((topping, index) => {
           return (
             <div
