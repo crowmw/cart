@@ -29,8 +29,7 @@
     { "id": 30, "name": "mała", "size": 30 },
     { "id": 40, "name": "średnia", "size": 40 },
     { "id": 50, "name": "duża", "size": 50 },
-    { "id": 50, "name": "mega", "size": 50 },
-    { "id": 60, "name": "giga", "size": 60 }
+    { "id": 60, "name": "mega", "size": 60 }
   ],
   "topping-types": ["sauce", "fruit-vegetable", "meat", "cheese", "spice"],
   "topping": [

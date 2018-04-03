@@ -4,9 +4,11 @@ import { bindActionCreators } from 'redux'
 
 import SizeChange from './sizeChange'
 import ToppingSelect from './toppingSelect'
+import Cart from './cart'
 
 import { fetchPizzas } from '../actions/pizza/pizzaActions'
 import { fetchTopping } from '../actions/topping/toppingActions'
+import { fetchPizzaSizes } from '../actions/size/sizeActions'
 import { currentPizzaChange } from '../actions/current/currentActions'
 import { addCurrentToCart } from '../actions/cart/cartActions'
 
@@ -17,6 +19,7 @@ class App extends Component {
   componentWillMount() {
     this.props.fetchPizzas()
     this.props.fetchTopping()
+    this.props.fetchPizzaSizes()
   }
 
   handlePizzaClick = pizza => {
@@ -62,6 +65,7 @@ class App extends Component {
               Dodaj do koszyka
             </button>
           )}
+          <Cart />
         </div>
       )
     } else {
@@ -82,6 +86,7 @@ const mapDispatch = dispatch => {
     {
       fetchPizzas,
       fetchTopping,
+      fetchPizzaSizes,
       currentPizzaChange,
       addCurrentToCart
     },

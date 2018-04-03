@@ -13,20 +13,62 @@ const mock = new mockAdapter(api)
 
 describe('currentActions', () => {
   describe('currentPizzaChange', () => {
-    it('should create CURRENT_PIZZA_CHANGE action', () => {
+    it('should create CURRENT_PIZZA_CHANGE action with lowest price of pizza', () => {
       const id = 'margherita'
-      const expectedAction = { type: types.CURRENT_PIZZA_CHANGE, id }
+      const price = 16
+      const expectedActions = [{ type: types.CURRENT_PIZZA_CHANGE, id, price }]
 
-      expect(actions.currentPizzaChange(id)).toEqual(expectedAction)
+      const store = mockStore({
+        pizza: {
+          entities: {
+            margherita: {
+              price: [price, 20, 25]
+            }
+          }
+        }
+      })
+
+      store.dispatch(actions.currentPizzaChange(id))
+      return expect(store.getActions()).toEqual(expectedActions)
     })
   })
 
   describe('currentSizeChange', () => {
     it('should create CURRENT_SIZE_CHANGE action', () => {
       const size = 30
-      const expectedAction = { type: types.CURRENT_SIZE_CHANGE, size }
+      const price = 16
+      const expectedActions = [{ type: types.CURRENT_SIZE_CHANGE, size, price }]
 
-      expect(actions.currentSizeChange(size)).toEqual(expectedAction)
+      const store = mockStore({
+        pizza: {
+          entities: {
+            farmerska: {
+              price: [16, 20, 30]
+            }
+          }
+        },
+        current: {
+          pizza: 'farmerska',
+          size: 30
+        },
+        size: {
+          pizzaSizes: {
+            30: {
+              id: 30,
+              name: 'mała',
+              size: 30
+            },
+            40: {
+              id: 40,
+              name: 'srednia',
+              size: 40
+            }
+          }
+        }
+      })
+
+      store.dispatch(actions.currentSizeChange(size))
+      return expect(store.getActions()).toEqual(expectedActions)
     })
   })
 

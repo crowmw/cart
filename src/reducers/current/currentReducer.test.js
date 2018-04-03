@@ -53,24 +53,26 @@ describe('currentReducer', () => {
       expect(reducer.size(reducer.initialState.size, action)).toEqual(expected)
     })
 
-    it('should clear on CART_ADD_CURRENT', () => {
-      const expected = reducer.initialState.size
+    it('should set smallest pizza size on FETCH_SIZE_SUCCESS', () => {
+      const expected = 30
 
-      const current = {
-        pizza: 'farmerska',
-        size: '45',
-        toppings: {
-          'sos-pomidorowy': 2,
-          pieczarki: 1
+      const action = {
+        type: types.FETCH_PIZZA_SIZES_SUCCESS,
+        pizzaSize: {
+          30: {
+            id: 30,
+            name: 'mała',
+            size: 30
+          },
+          40: {
+            id: 40,
+            name: 'srednia',
+            size: 40
+          }
         }
       }
 
-      const action = {
-        type: types.CART_ADD_CURRENT,
-        current
-      }
-
-      expect(reducer.size('farmerska', action)).toEqual(expected)
+      expect(reducer.size(reducer.initialState.size, action)).toEqual(expected)
     })
   })
 
@@ -105,10 +107,8 @@ describe('currentReducer', () => {
       expect(reducer.toppings({ pieczarki: 1 }, action)).toEqual(expected)
     })
 
-    it('should change value to 0 when topping have 2 on CURRENT_TOPPINGS_CHANGE', () => {
-      const expected = {
-        pieczarki: 0
-      }
+    it('should remove topping when topping have 2 on CURRENT_TOPPINGS_CHANGE', () => {
+      const expected = {}
 
       const action = {
         type: types.CURRENT_TOPPINGS_CHANGE,
@@ -120,7 +120,7 @@ describe('currentReducer', () => {
     })
 
     it('should clear on CART_ADD_CURRENT', () => {
-      const expected = reducer.initialState.size
+      const expected = reducer.initialState.toppings
 
       const current = {
         pizza: 'farmerska',
@@ -136,7 +136,59 @@ describe('currentReducer', () => {
         current
       }
 
-      expect(reducer.size('farmerska', action)).toEqual(expected)
+      expect(reducer.toppings('farmerska', action)).toEqual(expected)
+    })
+  })
+
+  describe('price', () => {
+    it('should change current price on CURRENT_PIZZA_CHANGE', () => {
+      const expected = 16
+      const id = 'farmerska'
+      const price = 16
+
+      const action = {
+        type: types.CURRENT_PIZZA_CHANGE,
+        id,
+        price
+      }
+
+      expect(reducer.price(reducer.initialState.price, action)).toEqual(
+        expected
+      )
+    })
+
+    it('should change current price on CURRENT_SIZE_CHANGE', () => {
+      const expected = 20
+      const id = 'farmerska'
+      const price = 20
+
+      const action = {
+        type: types.CURRENT_PIZZA_CHANGE,
+        id,
+        price
+      }
+
+      expect(reducer.price(16, action)).toEqual(expected)
+    })
+
+    it('should clear on CART_ADD_CURRENT', () => {
+      const expected = reducer.initialState.price
+
+      const current = {
+        pizza: 'farmerska',
+        size: '45',
+        toppings: {
+          'sos-pomidorowy': 2,
+          pieczarki: 1
+        }
+      }
+
+      const action = {
+        type: types.CART_ADD_CURRENT,
+        current
+      }
+
+      expect(reducer.price(20, action)).toEqual(expected)
     })
   })
 })

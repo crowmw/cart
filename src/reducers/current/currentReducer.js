@@ -3,8 +3,9 @@ import { combineReducers } from 'redux'
 
 export const initialState = {
   pizza: null,
-  size: 30,
-  toppings: {}
+  size: 0,
+  toppings: {},
+  price: 0
 }
 
 export const pizza = (state = initialState.pizza, action) => {
@@ -22,8 +23,10 @@ export const size = (state = initialState.size, action) => {
   switch (action.type) {
     case types.CURRENT_SIZE_CHANGE:
       return action.size
-    case types.CART_ADD_CURRENT:
-      return initialState.size
+    // case types.CART_ADD_CURRENT:
+    //   return initialState.size
+    case types.FETCH_PIZZA_SIZES_SUCCESS:
+      return Object.values(action.pizzaSize)[0].size
     default:
       return state
   }
@@ -32,11 +35,14 @@ export const size = (state = initialState.size, action) => {
 export const toppings = (state = initialState.toppings, action) => {
   switch (action.type) {
     case types.CURRENT_TOPPINGS_CHANGE:
-      return {
-        ...state,
-        [action.id]: state[action.id]
-          ? state[action.id] === 2 ? 0 : state[action.id] + 1
-          : action.quantity
+      if (state[action.id] === 2) {
+        delete state[action.id]
+        return { ...state }
+      } else {
+        return {
+          ...state,
+          [action.id]: state[action.id] ? state[action.id] + 1 : action.quantity
+        }
       }
     case types.CART_ADD_CURRENT:
       return initialState.toppings
@@ -45,10 +51,23 @@ export const toppings = (state = initialState.toppings, action) => {
   }
 }
 
+export const price = (state = initialState.price, action) => {
+  switch (action.type) {
+    case types.CURRENT_PIZZA_CHANGE:
+    case types.CURRENT_SIZE_CHANGE:
+      return action.price
+    case types.CART_ADD_CURRENT:
+      return initialState.price
+    default:
+      return state
+  }
+}
+
 const currentReducer = combineReducers({
   pizza,
   size,
-  toppings
+  toppings,
+  price
 })
 
 export default currentReducer
