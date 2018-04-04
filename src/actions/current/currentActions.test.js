@@ -74,15 +74,31 @@ describe('currentActions', () => {
 
   describe('currentToppingsChange', () => {
     it('should create CURRENT_TOPPINGS_CHANGE', () => {
-      const id = 1
+      const id = 'pieczarki'
       const quantity = 1
-      const expectedAction = {
-        type: types.CURRENT_TOPPINGS_CHANGE,
-        id,
-        quantity
-      }
+      const price = '2'
+      const expectedActions = [
+        {
+          type: types.CURRENT_TOPPINGS_CHANGE,
+          id,
+          quantity,
+          price
+        }
+      ]
 
-      expect(actions.currentToppingsChange(id)).toEqual(expectedAction)
+      const store = mockStore({
+        topping: {
+          entities: {
+            pieczarki: {
+              id,
+              price
+            }
+          }
+        }
+      })
+
+      store.dispatch(actions.currentToppingsChange(id))
+      return expect(store.getActions()).toEqual(expectedActions)
     })
   })
 })

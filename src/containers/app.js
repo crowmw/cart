@@ -13,7 +13,7 @@ import { currentPizzaChange } from '../actions/current/currentActions'
 import { addCurrentToCart } from '../actions/cart/cartActions'
 
 import { getPizzaEntitiesArray } from '../selectors/pizzaSelector'
-import { getCurrentPizza } from '../selectors/currentSelector'
+import { getCurrentPizza, getCurrentPrice } from '../selectors/currentSelector'
 
 class App extends Component {
   componentWillMount() {
@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   render() {
-    const { pizzas, currentPizza } = this.props
+    const { pizzas, currentPizza, currentPrice } = this.props
 
     if (pizzas.length > 0) {
       return (
@@ -65,6 +65,7 @@ class App extends Component {
               Dodaj do koszyka
             </button>
           )}
+          {currentPizza && currentPrice}
           <Cart />
         </div>
       )
@@ -77,7 +78,8 @@ class App extends Component {
 const mapState = state => {
   return {
     pizzas: getPizzaEntitiesArray(state),
-    currentPizza: getCurrentPizza(state)
+    currentPizza: getCurrentPizza(state),
+    currentPrice: getCurrentPrice(state)
   }
 }
 

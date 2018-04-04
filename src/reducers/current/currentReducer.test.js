@@ -76,7 +76,7 @@ describe('currentReducer', () => {
     })
   })
 
-  describe('toppings', () => {
+  describe('topping', () => {
     it('should change toppings on CURRENT_TOPPINGS_CHANGE', () => {
       const expected = {
         pieczarki: 1
@@ -88,7 +88,7 @@ describe('currentReducer', () => {
         quantity: 1
       }
 
-      expect(reducer.toppings(reducer.initialState.toppings, action)).toEqual(
+      expect(reducer.topping(reducer.initialState.toppings, action)).toEqual(
         expected
       )
     })
@@ -104,7 +104,7 @@ describe('currentReducer', () => {
         quantity: 1
       }
 
-      expect(reducer.toppings({ pieczarki: 1 }, action)).toEqual(expected)
+      expect(reducer.topping({ pieczarki: 1 }, action)).toEqual(expected)
     })
 
     it('should remove topping when topping have 2 on CURRENT_TOPPINGS_CHANGE', () => {
@@ -116,11 +116,11 @@ describe('currentReducer', () => {
         quantity: 1
       }
 
-      expect(reducer.toppings({ pieczarki: 2 }, action)).toEqual(expected)
+      expect(reducer.topping({ pieczarki: 2 }, action)).toEqual(expected)
     })
 
     it('should clear on CART_ADD_CURRENT', () => {
-      const expected = reducer.initialState.toppings
+      const expected = reducer.initialState.topping
 
       const current = {
         pizza: 'farmerska',
@@ -136,59 +136,7 @@ describe('currentReducer', () => {
         current
       }
 
-      expect(reducer.toppings('farmerska', action)).toEqual(expected)
-    })
-  })
-
-  describe('price', () => {
-    it('should change current price on CURRENT_PIZZA_CHANGE', () => {
-      const expected = 16
-      const id = 'farmerska'
-      const price = 16
-
-      const action = {
-        type: types.CURRENT_PIZZA_CHANGE,
-        id,
-        price
-      }
-
-      expect(reducer.price(reducer.initialState.price, action)).toEqual(
-        expected
-      )
-    })
-
-    it('should change current price on CURRENT_SIZE_CHANGE', () => {
-      const expected = 20
-      const id = 'farmerska'
-      const price = 20
-
-      const action = {
-        type: types.CURRENT_PIZZA_CHANGE,
-        id,
-        price
-      }
-
-      expect(reducer.price(16, action)).toEqual(expected)
-    })
-
-    it('should clear on CART_ADD_CURRENT', () => {
-      const expected = reducer.initialState.price
-
-      const current = {
-        pizza: 'farmerska',
-        size: '45',
-        toppings: {
-          'sos-pomidorowy': 2,
-          pieczarki: 1
-        }
-      }
-
-      const action = {
-        type: types.CART_ADD_CURRENT,
-        current
-      }
-
-      expect(reducer.price(20, action)).toEqual(expected)
+      expect(reducer.topping('farmerska', action)).toEqual(expected)
     })
   })
 })

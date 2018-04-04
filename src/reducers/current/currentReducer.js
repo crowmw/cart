@@ -4,8 +4,8 @@ import { combineReducers } from 'redux'
 export const initialState = {
   pizza: null,
   size: 0,
-  toppings: {},
-  price: 0
+  topping: {}
+  // price: 0
 }
 
 export const pizza = (state = initialState.pizza, action) => {
@@ -32,7 +32,7 @@ export const size = (state = initialState.size, action) => {
   }
 }
 
-export const toppings = (state = initialState.toppings, action) => {
+export const topping = (state = initialState.topping, action) => {
   switch (action.type) {
     case types.CURRENT_TOPPINGS_CHANGE:
       if (state[action.id] === 2) {
@@ -45,29 +45,30 @@ export const toppings = (state = initialState.toppings, action) => {
         }
       }
     case types.CART_ADD_CURRENT:
-      return initialState.toppings
+      return initialState.topping
     default:
       return state
   }
 }
 
-export const price = (state = initialState.price, action) => {
-  switch (action.type) {
-    case types.CURRENT_PIZZA_CHANGE:
-    case types.CURRENT_SIZE_CHANGE:
-      return action.price
-    case types.CART_ADD_CURRENT:
-      return initialState.price
-    default:
-      return state
-  }
-}
+// export const price = (state = initialState.price, action) => {
+//   switch (action.type) {
+//     case types.CURRENT_PIZZA_CHANGE:
+//     case types.CURRENT_SIZE_CHANGE:
+//       return action.price
+//     case types.CART_ADD_CURRENT:
+//       return initialState.price
+//     case types.CURRENT_TOPPINGS_CHANGE:
+//     default:
+//       return state
+//   }
+// }
 
 const currentReducer = combineReducers({
   pizza,
   size,
-  toppings,
-  price
+  topping
+  // price
 })
 
 export default currentReducer
