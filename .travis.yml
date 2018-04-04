@@ -1,7 +1,7 @@
 language: node_js
 sudo: true
 node_js:
-    - 6
+    - 7
 script:
     - npm run singletest
     - npm run build
