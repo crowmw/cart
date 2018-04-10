@@ -1,0 +1,19 @@
+.home-section {
+  padding: 0 16px;
+  margin-top: 8px;
+  background: #fff;
+}
+
+.home-section-header {
+  display: flex;
+  padding: 10px 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-section-header h2 {
+  text-transform: uppercase;
+  margin:0; 
+  padding: 0;
+}

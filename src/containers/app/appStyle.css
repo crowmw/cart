@@ -1,0 +1,24 @@
+.container {
+  max-width: 800px;
+  width:100%;
+  background: #f8f8f8;
+}
+
+.main-section {
+  width: 100%;
+  background: #fff;
+  padding: 16px;
+}
+
+#logo {
+  height: 48px;
+  width: 100px;
+}
+
+#topbar {
+  height: 48px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { getCartOrders, getCartPrice } from '../selectors/cartSelector'
 
 class Cart extends Component {

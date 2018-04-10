@@ -1,0 +1,34 @@
+.categories-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 16px;
+}
+
+.category-item{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.category-item span {
+
+}
+
+.category-item .category-icon-container {
+  height: 32px;
+  width: 32px;
+  padding: 5px;
+  background: mediumvioletred;
+  border-radius: 50%;
+}
+
+.category-item .category-icon-container img {
+  color: white;
+}
+
+
